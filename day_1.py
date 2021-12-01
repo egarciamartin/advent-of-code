@@ -1,3 +1,6 @@
+import util
+
+
 def part1(l):
     counter = 0
     for i, item in enumerate(l):
@@ -7,13 +10,10 @@ def part1(l):
         if item > prev:
             counter += 1
         prev = item
-    print(counter)
+    return counter
 
 
 def part2(l):
-    """
-    Sliding window of 3, sum and compare.
-    """
     counter = 0
     window = 3
     i = 0
@@ -29,25 +29,18 @@ def part2(l):
 
         sum_prev = sum_window
         i += 1
-    print(counter)
+    return counter
 
 
-# Test input
+# Inputs
 test = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
-print('Part 1: Test input')
-part1(test)
+input = util.parse_input('day1')
 
-# Read input
-with open('input.txt') as file:
-    lines = file.readlines()
-    input = [int(line.rstrip()) for line in lines]
 
 # Part 1
-print('Part 1: Real input')
-part1(input)
+print(f'Part 1: Test input -- {part1(test)}')
+print(f'Part 1: Real input -- {part1(input)}')
 
 # Part 2
-print('Part 2: Test input')
-part2(test)
-print('Part 2: Real input')
-part2(input)
+print(f'Part 2: Test input -- {part2(test)}')
+print(f'Part 2: Real input -- {part2(input)}')
