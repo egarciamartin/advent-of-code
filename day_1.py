@@ -3,10 +3,8 @@ import util
 
 def part1(l):
     counter = 0
-    for i, item in enumerate(l):
-        if i == 0:
-            prev = item
-            continue
+    prev = l[0]
+    for item in l:
         if item > prev:
             counter += 1
         prev = item
@@ -15,20 +13,12 @@ def part1(l):
 
 def part2(l):
     counter = 0
-    window = 3
-    i = 0
-    while ((i + window) <= len(l)):
+    sum_prev = l[0]
+    for i in range(len(l)-2):
         sum_window = l[i] + l[i+1] + l[i+2]
-        if i == 0:
-            sum_prev = sum_window
-            i += 1
-            continue
-
-        if sum_window > sum_prev:
+        if i > 0 and sum_window > sum_prev:
             counter += 1
-
         sum_prev = sum_window
-        i += 1
     return counter
 
 
