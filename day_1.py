@@ -28,9 +28,9 @@ input = util.parse_input('day1')
 
 
 # Part 1
-print(f'Part 1: Test input -- {part1(test)}')
-print(f'Part 1: Real input -- {part1(input)}')
+print(f'Part 1: Test input: {part1(test)}')
+print(f'Part 1: Real input: {part1(input)}')
 
 # Part 2
-print(f'Part 2: Test input -- {part2(test)}')
-print(f'Part 2: Real input -- {part2(input)}')
+print(f'Part 2: Test input: {part2(test)}')
+print(f'Part 2: Real input: {part2(input)}')
