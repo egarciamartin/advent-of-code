@@ -1,5 +1,4 @@
 import util
-import pandas as pd
 
 
 def part1(input):
