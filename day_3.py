@@ -41,8 +41,6 @@ def get_ratings(input, zero_order=[0, 1]):
 
 
 def part2(input):
-
-    co2_sr = 0
     input = np.array([list(number) for number in input]).astype(int)
     ogr = get_ratings(input, zero_order=[0, 1])
     co2_sr = get_ratings(input, zero_order=[1, 0])
