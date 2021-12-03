@@ -22,15 +22,17 @@ def part2(l):
     return counter
 
 
-# Inputs
-test = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
-input = util.parse_input('day1')
+if __name__ == '__main__':
+    # Inputs
+    test = util.parse_input('day1_test')
+    test = [int(item) for item in test]
+    input = util.parse_input('day1')
+    input = [int(item) for item in input]
 
+    # Part 1
+    print(f'Part 1: Test input: {part1(test)}')
+    print(f'Part 1: Real input: {part1(input)}')
 
-# Part 1
-print(f'Part 1: Test input: {part1(test)}')
-print(f'Part 1: Real input: {part1(input)}')
-
-# Part 2
-print(f'Part 2: Test input: {part2(test)}')
-print(f'Part 2: Real input: {part2(input)}')
+    # Part 2
+    print(f'Part 2: Test input: {part2(test)}')
+    print(f'Part 2: Real input: {part2(input)}')

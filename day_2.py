@@ -35,14 +35,16 @@ def part2(input):
     return horizontal * depth
 
 
-# Inputs
-test = util.parse_input_split('day2_test')
-input = util.parse_input_split('day2')
+if __name__ == '__main__':
 
-# Part 1
-print(f'Part 1: Test input: {part1(test)}')
-print(f'Part 1: Real input: {part1(input)}')
+    # Inputs
+    test = util.parse_input_split('day2_test')
+    input = util.parse_input_split('day2')
 
-# Part 2
-print(f'Part 2: Test input: {part2(test)}')
-print(f'Part 2: Real input: {part2(input)}')
+    # Part 1
+    print(f'Part 1: Test input: {part1(test)}')
+    print(f'Part 1: Real input: {part1(input)}')
+
+    # Part 2
+    print(f'Part 2: Test input: {part2(test)}')
+    print(f'Part 2: Real input: {part2(input)}')
