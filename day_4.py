@@ -1,4 +1,3 @@
-import util
 import numpy as np
 
 
