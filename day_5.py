@@ -18,19 +18,13 @@ def get_grid_size(input):
 
 def get_points_diagonal(p1, p2):
     points = list()
-    point = p1
-    points.append(point)
-    while point != p2:
-        if p1[0] < p2[0] and p1[1] < p2[1]:
-            point = (point[0]+1, point[1]+1)
-        elif p1[0] > p2[0] and p1[1] < p2[1]:
-            point = (point[0]-1, point[1]+1)
-        elif p1[0] > p2[0] and p1[1] > p2[1]:
-            point = (point[0]-1, point[1]-1)
-        elif p1[0] < p2[0] and p1[1] > p2[1]:
-            point = (point[0]+1, point[1]-1)
+    p = p1
+    points.append(p)
+    while p != p2:
+        p = (p[0]+1, p[1]) if p1[0] < p2[0] else (p[0] - 1, p[1])
+        p = (p[0], p[1] + 1) if p1[1] < p2[1] else (p[0], p[1] - 1)
 
-        points.append(point)
+        points.append(p)
     return points
 
 
