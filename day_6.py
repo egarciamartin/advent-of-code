@@ -26,20 +26,49 @@ def count_slow(input, days):
     return len(timers)
 
 
-def count(input, days):
+def count_list(input, days):
+    """
+    Practice purposes. 
+    Same as the hashmap but with two lists
+    """
+    counts = [0 for i in range(9)]
+    for item in input:
+        counts[item] += 1
+
+    for day in range(days):
+        temp = [0 for i in range(9)]
+        for i, item in enumerate(counts):
+            if i == 0 and item > 0:
+                temp[6] += item
+                temp[8] += item
+            else:
+                temp[i-1] += item
+
+        counts = temp
+    return sum(counts)
+
+
+def count_hashmap(input, days):
+    """
+    Two dicts, to save the new information on the new_d
+    without overwritting the orginal one: d
+
+    Note-to-self: new_d[timer-1] += n and not just =n 
+    in case we have already moved one of the other values (e.g. if we already have 
+    moved a count of 2 from 7 to 6)
+    """
     d = defaultdict(int)
     for i in input:
-        d[i] = d[i] + 1
+        d[i] += 1
 
     for day in range(days):
         new_d = defaultdict(int)
-        for k, v in d.items():
-            if k == 0:
-                new_d[6] += v
-                new_d[8] += v
+        for timer, n in d.items():
+            if timer == 0:
+                new_d[6] += n
+                new_d[8] += n
             else:
-                new_d[k-1] += v
-
+                new_d[timer-1] += n
         d = new_d
 
     return sum(d.values())
@@ -50,8 +79,8 @@ if __name__ == '__main__':
     test = parse_input('day6_test')
     input = parse_input('day6')
 
-    print(f"Part 1: Test: {count(test, 80)}")
-    print(f"Part 1: Real: {count(input, 80)}")
+    print(f"Part 1: Test: {count_hashmap(test, 80)}")
+    print(f"Part 1: Real: {count_hashmap(input, 80)}")
 
-    print(f"Part 2: Test: {count(test, 256)}")
-    print(f"Part 2: Real: {count(input, 256)}")
+    print(f"Part 2: Test: {count_hashmap(test, 256)}")
+    print(f"Part 2: Real: {count_hashmap(input, 256)}")
