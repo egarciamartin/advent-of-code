@@ -24,25 +24,6 @@ def parse_input(day):
     return numbers, boards
 
 
-def part1(numbers, boards):
-    masks = [np.full((5, 5), False) for board in boards]
-    winner = False
-    i = 0
-    score = 0
-    while winner == False:
-        number = numbers[i]
-        for j, board in enumerate(boards):
-            mask = board[:, :] == number
-            masks[j] = masks[j] + mask
-            sums = (np.sum(masks[j], axis=1), np.sum(masks[j], axis=0))
-            if (5 in sums[0]) or (5 in sums[1]):
-                winner = True
-                s = np.sum(board * ~masks[j])
-                score = number * s
-        i += 1
-    return int(score)
-
-
 def get_score(numbers, boards, part2=False):
     masks = [np.full((5, 5), False) for board in boards]
     wins = [False for board in boards]
