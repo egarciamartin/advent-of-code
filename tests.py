@@ -50,8 +50,8 @@ def test_day4(day, values):
 
     numbers, boards = day_4.parse_input(day)
 
-    assert p1_res == day_4.part1(numbers, boards), "Part 1 incorrect"
-    assert p2_res == day_4.part2(numbers, boards), "Part 2 incorrect"
+    assert p1_res == day_4.get_score(numbers, boards), "Part 1 incorrect"
+    assert p2_res == day_4.get_score(numbers, boards, True), "Part 2 incorrect"
     print(f"All tests passed for {day}")
 
 

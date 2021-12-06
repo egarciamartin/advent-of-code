@@ -49,7 +49,7 @@ def get_score(numbers, boards, part2=False):
                     s = np.sum(board * ~masks[j])
                     score = number * s
         i += 1
-    return int(score)
+    return int(number * s)
 
 
 if __name__ == '__main__':
