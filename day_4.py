@@ -29,14 +29,12 @@ def get_score(numbers, boards, part2=False):
     wins = [False for board in boards]
     winner = False
     i = 0
-    score = 0
     while winner == False:
         number = numbers[i]
         for j, board in enumerate(boards):
             mask = board[:, :] == number
             masks[j] = masks[j] + mask
-            sums = (np.sum(masks[j], axis=1), np.sum(masks[j], axis=0))
-            if (5 in sums[0]) or (5 in sums[1]):
+            if np.any((np.all(masks[j], axis=0), np.all(masks[j], axis=1))):
                 if part2:
                     if (sum(wins) == (len(wins) - 1)) and (wins[j] == False):
                         s = np.sum(board * ~masks[j])
