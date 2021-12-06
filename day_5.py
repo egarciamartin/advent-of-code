@@ -16,15 +16,14 @@ def get_grid_size(input):
     return (max_+1, max_+1)
 
 
-def get_points_diagonal(p1, p2):
-    points = list()
-    p = p1
-    points.append(p)
-    while p != p2:
-        p = (p[0]+1, p[1]) if p1[0] < p2[0] else (p[0] - 1, p[1])
-        p = (p[0], p[1] + 1) if p1[1] < p2[1] else (p[0], p[1] - 1)
-
-        points.append(p)
+def get_points(p1, p2):
+    points = [p1]
+    point = p1
+    while point != p2:
+        x = 1 if p1[0] < p2[0] else 0 if p1[0] == p2[0] else -1
+        y = 1 if p1[1] < p2[1] else 0 if p1[1] == p2[1] else -1
+        point = (point[0] + x, point[1] + y)
+        points.append(point)
     return points
 
 
@@ -33,21 +32,10 @@ def sum_points(input, part2=False):
     grid = np.zeros(size)
 
     for (x1, y1), (x2, y2) in input:
-        if x1 == x2:
-            if y1 > y2:
-                y1, y2 = y2, y1
-            grid[y1:y2+1, x1] += 1
-
-        elif y1 == y2:
-            if x1 > x2:
-                x1, x2 = x2, x1
-            grid[y1, x1:x2+1] += 1
-
-        else:
-            if part2:
-                points = get_points_diagonal((x1, y1), (x2, y2))
-                for i in points:
-                    grid[i[1], i[0]] += 1
+        if (x1 == x2 or y1 == y2) or part2:
+            points = get_points((x1, y1), (x2, y2))
+            for i in points:
+                grid[i[1], i[0]] += 1
 
     return np.sum(grid[:, :] >= 2)
 
