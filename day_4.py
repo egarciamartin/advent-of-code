@@ -43,7 +43,7 @@ def part1(numbers, boards):
     return int(score)
 
 
-def part2(numbers, boards):
+def get_score(numbers, boards, part2=False):
     masks = [np.full((5, 5), False) for board in boards]
     wins = [False for board in boards]
     winner = False
@@ -56,12 +56,17 @@ def part2(numbers, boards):
             masks[j] = masks[j] + mask
             sums = (np.sum(masks[j], axis=1), np.sum(masks[j], axis=0))
             if (5 in sums[0]) or (5 in sums[1]):
-                if (sum(wins) == (len(wins) - 1)) and (wins[j] == False):
+                if part2:
+                    if (sum(wins) == (len(wins) - 1)) and (wins[j] == False):
+                        s = np.sum(board * ~masks[j])
+                        score = number * s
+                        winner = True
+                    else:
+                        wins[j] = True
+                else:
+                    winner = True
                     s = np.sum(board * ~masks[j])
                     score = number * s
-                    winner = True
-                else:
-                    wins[j] = True
         i += 1
     return int(score)
 
@@ -70,8 +75,8 @@ if __name__ == '__main__':
     numbers_t, boards_t = parse_input('day4_test')
     numbers, boards = parse_input('day4')
 
-    print(f"Part 1. Test: {part1(numbers_t, boards_t)}")
-    print(f"Part 1. Real: {part1(numbers, boards)}")
+    print(f"Part 1. Test: {get_score(numbers_t, boards_t)}")
+    print(f"Part 1. Real: {get_score(numbers, boards)}")
 
-    print(f"Part 2. Test: {part2(numbers_t, boards_t)}")
-    print(f"Part 2. Real: {part2(numbers, boards)}")
+    print(f"Part 2. Test: {get_score(numbers_t, boards_t, True)}")
+    print(f"Part 2. Real: {get_score(numbers, boards, True)}")
