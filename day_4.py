@@ -40,14 +40,12 @@ def get_score(numbers, boards, part2=False):
                 if part2:
                     if (sum(wins) == (len(wins) - 1)) and (wins[j] == False):
                         s = np.sum(board * ~masks[j])
-                        score = number * s
                         winner = True
                     else:
                         wins[j] = True
                 else:
                     winner = True
                     s = np.sum(board * ~masks[j])
-                    score = number * s
         i += 1
     return int(number * s)
 
