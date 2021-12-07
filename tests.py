@@ -5,6 +5,7 @@ import day_3
 import day_4
 import day_5
 import day_6
+import day_7
 
 
 def test_day1(day, values):
@@ -77,6 +78,17 @@ def test_day6(day, values):
     print(f"All tests passed for {day}")
 
 
+def test_day7(day, values):
+    p1_res = values[0]
+    p2_res = values[1]
+
+    input = day_7.parse_input(day)
+
+    assert p1_res == day_7.get_lowest_fuel(input), "Part 1 incorrect"
+    assert p2_res == day_7.get_lowest_squared_fuel(input), "Part 2 incorrect"
+    print(f"All tests passed for {day}")
+
+
 test_day1('day1_test', (7, 5))
 test_day1('day1', (1390, 1457))
 
@@ -95,5 +107,7 @@ test_day5('day5', (5576, 18144))
 test_day6('day6_test', (5934, 26984457539))
 test_day6('day6', (360268, 1632146183902))
 
+test_day7('day7_test', (37, 168))
+test_day7('day7', (339321, 95476244))
 
 print("All tests passed")

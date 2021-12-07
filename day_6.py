@@ -48,7 +48,7 @@ def count_list(input, days):
     return sum(counts)
 
 
-def count_hashmap(input, days):
+def count(input, days):
     """
     Two dicts, to save the new information on the new_d
     without overwritting the orginal one: d
@@ -79,8 +79,8 @@ if __name__ == '__main__':
     test = parse_input('day6_test')
     input = parse_input('day6')
 
-    print(f"Part 1: Test: {count_hashmap(test, 80)}")
-    print(f"Part 1: Real: {count_hashmap(input, 80)}")
+    print(f"Part 1: Test: {count(test, 80)}")
+    print(f"Part 1: Real: {count(input, 80)}")
 
-    print(f"Part 2: Test: {count_hashmap(test, 256)}")
-    print(f"Part 2: Real: {count_hashmap(input, 256)}")
+    print(f"Part 2: Test: {count(test, 256)}")
+    print(f"Part 2: Real: {count(input, 256)}")
