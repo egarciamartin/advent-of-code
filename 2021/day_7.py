@@ -6,7 +6,7 @@ def parse_input(day):
     return input
 
 
-def get_lowest_fuel(input):
+def part1(input):
     """
     median
     """
@@ -14,7 +14,7 @@ def get_lowest_fuel(input):
     return sum([abs(i - position) for i in input])
 
 
-def get_lowest_squared_fuel(input):
+def part2(input):
     """
     mean and surroundings
     """
@@ -32,8 +32,8 @@ if __name__ == '__main__':
     test = parse_input('day7_test')
     input = parse_input('day7')
 
-    print(f"Part 1: Test: {get_lowest_fuel(test)}")
-    print(f"Part 1: Real: {get_lowest_fuel(input)}")
+    print(f"Part 1: Test: {part1(test)}")
+    print(f"Part 1: Real: {part1(input)}")
 
-    print(f'Part 2: Test {get_lowest_squared_fuel(test)}')
-    print(f'Part 2: Real {get_lowest_squared_fuel(input)}')
+    print(f'Part 2: Test {part2(test)}')
+    print(f'Part 2: Real {part2(input)}')

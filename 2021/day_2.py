@@ -1,4 +1,8 @@
-import util
+def parse_input(day):
+    with open(f'inputs/{day}.txt') as file:
+        lines = file.readlines()
+        input = [line.strip().split(" ") for line in lines]
+    return input
 
 
 def part1(input):
@@ -38,8 +42,8 @@ def part2(input):
 if __name__ == '__main__':
 
     # Inputs
-    test = util.parse_input_split('day2_test')
-    input = util.parse_input_split('day2')
+    test = parse_input('day2_test')
+    input = parse_input('day2')
 
     # Part 1
     print(f'Part 1: Test input: {part1(test)}')

@@ -1,5 +1,11 @@
-import util
 import numpy as np
+
+
+def parse_input(day):
+    with open(f'inputs/{day}.txt') as file:
+        lines = file.readlines()
+        input = [(line.strip()) for line in lines]
+    return input
 
 
 def part1(input):
@@ -51,8 +57,8 @@ def part2(input):
 if __name__ == '__main__':
 
     # Inputs
-    test = util.parse_input('day3_test')
-    input = util.parse_input('day3')
+    test = parse_input('day3_test')
+    input = parse_input('day3')
 
     # Part 1
     print(f'Part 1: Test input: {part1(test)}')

@@ -1,4 +1,8 @@
-import util
+def parse_input(day):
+    with open(f'inputs/{day}.txt') as file:
+        lines = file.readlines()
+        input = [int(line.strip()) for line in lines]
+    return input
 
 
 def part1(l):
@@ -24,10 +28,8 @@ def part2(l):
 
 if __name__ == '__main__':
     # Inputs
-    test = util.parse_input('day1_test')
-    test = [int(item) for item in test]
-    input = util.parse_input('day1')
-    input = [int(item) for item in input]
+    test = parse_input('day1_test')
+    input = parse_input('day1')
 
     # Part 1
     print(f'Part 1: Test input: {part1(test)}')

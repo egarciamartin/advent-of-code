@@ -24,7 +24,9 @@ def parse_input(day):
     return numbers, boards
 
 
-def get_score(numbers, boards, part2=False):
+def part1(input, part2=False):
+
+    numbers, boards = input
     masks = [np.full((5, 5), False) for board in boards]
     wins = [False for board in boards]
     winner = False
@@ -48,12 +50,16 @@ def get_score(numbers, boards, part2=False):
     return int(number * s)
 
 
+def part2(input):
+    return part1(input, part2=True)
+
+
 if __name__ == '__main__':
-    numbers_t, boards_t = parse_input('day4_test')
-    numbers, boards = parse_input('day4')
+    test = parse_input('day4_test')
+    input = parse_input('day4')
 
-    print(f"Part 1. Test: {get_score(numbers_t, boards_t)}")
-    print(f"Part 1. Real: {get_score(numbers, boards)}")
+    print(f"Part 1. Test: {part1(test)}")
+    print(f"Part 1. Real: {part1(input)}")
 
-    print(f"Part 2. Test: {get_score(numbers_t, boards_t, True)}")
-    print(f"Part 2. Real: {get_score(numbers, boards, True)}")
+    print(f"Part 2. Test: {part2(test)}")
+    print(f"Part 2. Real: {part2(input)}")

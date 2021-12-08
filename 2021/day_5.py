@@ -27,7 +27,7 @@ def get_points(p1, p2):
     return points
 
 
-def sum_points(input, part2=False):
+def part1(input, part2=False):
     size = get_grid_size(input)
     grid = np.zeros(size)
 
@@ -40,13 +40,17 @@ def sum_points(input, part2=False):
     return np.sum(grid[:, :] >= 2)
 
 
+def part2(input):
+    return part1(input, part2=True)
+
+
 if __name__ == '__main__':
 
     test = parse_input('day5_test')
     input = parse_input('day5')
 
-    print(f"Part 1: Test: {sum_points(test)}")
-    print(f"Part 1: Real: {sum_points(input)}")
+    print(f"Part 1: Test: {part1(test)}")
+    print(f"Part 1: Real: {part1(input)}")
 
-    print(f"Part 2: Test: {sum_points(test, part2=True)}")
-    print(f"Part 2: Real: {sum_points(input, part2=True)}")
+    print(f"Part 2: Test: {part2(test)}")
+    print(f"Part 2: Real: {part2(input)}")
