@@ -11,7 +11,7 @@ def get_lowest_fuel(input):
     median
     """
     position = sorted(input)[len(input) // 2]
-    return sum([abs(i-position) for i in input])
+    return sum([abs(i - position) for i in input])
 
 
 def get_lowest_squared_fuel(input):
@@ -23,7 +23,7 @@ def get_lowest_squared_fuel(input):
     fuels = list()
     for position in [position, position+1, position-1]:
         fuels.append(
-            sum([sum(j for j in range(1, abs(i-position)+1)) for i in input]))
+            sum([sum(j for j in range(1, abs(i - position)+1)) for i in input]))
     return min(fuels)
 
 
