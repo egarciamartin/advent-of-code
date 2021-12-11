@@ -38,7 +38,6 @@ def part2(input):
             elif d[q.pop()] != c:
                 corrupt = True
                 break
-
         if not corrupt:
             lc = [d[i] for i in list(reversed(q))]
             score = 0
