@@ -29,13 +29,11 @@ def part1(input):
 
             if fold.split('=')[0] == 'y':
                 keys_rev = [k for k in m if k[1] == rev]
-
                 for k in keys_rev:
                     m.add((k[0], n))
 
             else:
                 keys_rev = [k for k in m if k[0] == rev]
-
                 for k in keys_rev:
                     m.add((n, k[1]))
 
