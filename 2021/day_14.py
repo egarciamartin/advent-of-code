@@ -1,6 +1,5 @@
 from collections import Counter, defaultdict
 from copy import copy
-from math import ceil
 
 
 def parse_input(day):
