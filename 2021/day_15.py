@@ -35,36 +35,20 @@ def get_neighbors(point, grid_size):
     return neighbors
 
 
-def reconstruct_path(came_from, start, end):
-    current = end
-    path = list()
-    while current != start:
-        path.append(current)
-        current = came_from[current]
-    path.append(start)
-    path.reverse()
-    return path
-
-
-def part1(input):
+def dijkstra(max_coordinate, grid_size, cave_map):
     """"
     Dijkstra with priority queues. 
     From: https://www.redblobgames.com/pathfinding/a-star/implementation.html#python-dijkstra 
     """
-    cave_map = get_cave_map(input)
-    max_coordinate = max(cave_map.keys())
-    grid_size = (max_coordinate[0] + 1, max_coordinate[1]+1)
-
     q = PriorityQueue()
     q.put((0, (0, 0)))
     came_from = defaultdict(Tuple)
     cost_so_far = defaultdict(int)
     came_from[(0, 0)] = None
-    cost_so_far[(0, 0)] = 1
+    cost_so_far[(0, 0)] = 0
 
     while q:
         current = q.get()[1]
-        # print(current)
         if current == max_coordinate:
             break
         for next in get_neighbors(current, grid_size):
@@ -73,30 +57,30 @@ def part1(input):
                 cost_so_far[next] = new_cost
                 q.put((new_cost, next))
                 came_from[next] = current
+    return cost_so_far[max_coordinate]
 
-    path = reconstruct_path(came_from, (0, 0), max_coordinate)
-    return sum([cave_map[coordinate] for coordinate in path]) - cave_map[0, 0]
+
+def part1(input):
+
+    cave_map = get_cave_map(input)
+    max_coordinate = max(cave_map.keys())
+    grid_size = (max_coordinate[0] + 1, max_coordinate[1]+1)
+    cost = dijkstra(max_coordinate, grid_size, cave_map)
+
+    return cost
 
 
 def get_new_map(cave_map, grid_size):
-    temp_map = copy(cave_map)
+    new_map = defaultdict(int)
     for k, v in cave_map.items():
-        for incr in range(1, 5):
-            new_k_y = (k[0] + (grid_size[0]) * incr, k[1])
-            if (v + incr) <= 9:
-                new_v = v + incr
-            else:
-                new_v = incr - (9 - v)
-            temp_map[new_k_y] = new_v
-    new_map = copy(temp_map)
-    for k, v in temp_map.items():
-        for incr in range(1, 5):
-            new_k_x = (k[0], k[1] + (grid_size[1]) * incr)
-            if (v + incr) <= 9:
-                new_v = v + incr
-            else:
-                new_v = incr - (9 - v)
-            new_map[new_k_x] = new_v
+        for incr_x in range(5):
+            for incr_y in range(5):
+                new_k = (k[0] + (grid_size[0] * incr_x),
+                         k[1] + (grid_size[1] * incr_y))
+                new_v = v + incr_x + incr_y
+                if new_v > 9:
+                    new_v = new_v % 9
+                new_map[new_k] = new_v
     return new_map
 
 
@@ -109,27 +93,9 @@ def part2(input):
 
     max_coordinate = max(cave_map.keys())
     grid_size = (max_coordinate[0] + 1, max_coordinate[1]+1)
+    cost = dijkstra(max_coordinate, grid_size, cave_map)
 
-    q = PriorityQueue()
-    q.put((0, (0, 0)))
-    came_from = defaultdict(Tuple)
-    cost_so_far = defaultdict(int)
-    came_from[(0, 0)] = None
-    cost_so_far[(0, 0)] = 1
-
-    while q:
-        current = q.get()[1]
-        if current == max_coordinate:
-            break
-        for next in get_neighbors(current, grid_size):
-            new_cost = cost_so_far[current] + cave_map[next]
-            if next not in cost_so_far or new_cost < cost_so_far[next]:
-                cost_so_far[next] = new_cost
-                q.put((new_cost, next))
-                came_from[next] = current
-
-    path = reconstruct_path(came_from, (0, 0), max_coordinate)
-    return sum([cave_map[coordinate] for coordinate in path]) - cave_map[0, 0]
+    return cost
 
 
 if __name__ == '__main__':
