@@ -19,10 +19,8 @@ def get_octupus_map(input):
 
 def get_neighbors(point):
     """
-    Only up, down, left, right
-    If it would be with diagonals:
-    directions_all = [(0, 1), (0, -1), (1, 0), (1, 1),
-                      (1, -1), (-1, 0), (-1, 1), (-1, -1)]
+    Diagonals also
+
     """
     grid_size = (10, 10)
     neighbors = list()

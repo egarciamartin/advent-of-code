@@ -11,8 +11,10 @@ import day_10
 import day_11
 import day_12
 import day_13
+import day_14
+import day_15
 
-DAYS = 13
+DAYS = 15
 days = [i for i in range(1, DAYS + 1)]
 days_func = [eval(f'day_{i}') for i in days]
 results = [[(7, 5), (1390, 1457)],
@@ -28,8 +30,8 @@ results = [[(7, 5), (1390, 1457)],
            [(1656, 195), (1725, 308)],
            [(10, 36), (3410, 98796)],
            [(17, None), (621, None)],
-           [(1588, 2188189693529), (3306, 3760312702877)]
-           ]
+           [(1588, 2188189693529), (3306, 3760312702877)],
+           [(40, 315), (589, 2885)]]
 
 
 for i, day_func in zip(days, days_func):
