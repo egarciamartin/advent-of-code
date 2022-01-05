@@ -13,47 +13,33 @@ import day_12
 import day_13
 import day_14
 import day_15
-import day_16
 import day_17
-
-DAYS = 17
-days = [i for i in range(1, DAYS + 1)]
-days_func = [eval(f'day_{i}') for i in days]
-results = [[(7, 5), (1390, 1457)],
-           [(150, 900), (2027977, 1903644897)],
-           [(198, 230), (3687446, 4406844)],
-           [(4512, 1924), (58838, 6256)],
-           [(5, 12), (5576, 18144)],
-           [(5934, 26984457539), (360268, 1632146183902)],
-           [(37, 168), (339321, 95476244)],
-           [(26, 61229), (519, 1027483)],
-           [(15, 1134), (489, 1056330)],
-           [(26397, 288957), (290691, 2768166558)],
-           [(1656, 195), (1725, 308)],
-           [(10, 36), (3410, 98796)],
-           [(17, None), (621, None)],
-           [(1588, 2188189693529), (3306, 3760312702877)],
-           [(40, 315), (589, 2885)],
-           [(None, None), (None, None)],
-           [(45, 112), (6903, 2351)]]
+import day_20
+import day_24
+import day_25
 
 
-for i, day_func in zip(days, days_func):
-    input = day_func.parse_input(f'day{i}')
-    test = day_func.parse_input(f'day{i}_test')
+with open(f'results.csv') as file:
+    lines = file.readlines()
+    results = [line.strip() for line in lines]
 
-    p1_test = day_func.part1(test)
-    p2_test = day_func.part2(test)
+for i in range(25):
+    try:
+        day_func = eval(f'day_{i+1}')
+    except:
+        print(f"No solution yet for Day {i+1}")
+        continue
 
-    p1_real = day_func.part1(input)
-    p2_real = day_func.part2(input)
+    input = day_func.parse_input(f'day{i+1}')
+    p1 = day_func.part1(input)
+    p2 = day_func.part2(input)
 
-    assert p1_test == results[i-1][0][0], f"Day {i} test part 1 incorrect"
-    assert p2_test == results[i-1][0][1], f"Day {i} test part 2 incorrect"
+    p1_res = int(results[i+1].split(",")[1])
+    p2_res = int(results[i+1].split(",")[2])
 
-    assert p1_real == results[i-1][1][0], f"Day {i} part 1 incorrect"
-    assert p2_real == results[i-1][1][1], f"Day {i} part 2 incorrect"
+    assert p1 == p1_res, f"Day {i+1} part 1 incorrect"
+    assert p2 == p2_res, f"Day {i+1} part 2 incorrect"
 
-    print(f"Tests for day {i} passed")
+    print(f"Day {i+1} Tests Passed")
 
-print("--- All tests passed ----")
+print("All Tests Passed")

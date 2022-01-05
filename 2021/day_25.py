@@ -56,7 +56,7 @@ def part1(input):
 
 def part2(input):
 
-    return
+    return -1
 
 
 if __name__ == '__main__':

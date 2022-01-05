@@ -81,6 +81,7 @@ def part2(input):
             else:
                 row.append(" ")
         print("".join(row))
+    return -1
 
 
 if __name__ == '__main__':
