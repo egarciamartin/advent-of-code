@@ -14,7 +14,7 @@ def read_input(file):
     with open(file) as f:
         guide = f.readlines()
         guide = [line.strip() for line in guide]
-        guide = [(line.split(" ")[0], line.split(" ")[1])for line in guide]
+        guide = [(line.split(" ")[0], line.split(" ")[1]) for line in guide]
         return guide
 
 
@@ -54,7 +54,6 @@ def part2(guide):
         elif shape == "Z":
             pos = 1
             score += 6
-
         elif shape == "X":
             pos = 2
         ind = score_chart[elf] - 1
