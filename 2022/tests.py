@@ -1,7 +1,8 @@
 import pandas as pd
 import day1 as d1
+import day2 as d2
 
-DAYS = 1
+DAYS = 2
 results = pd.read_csv('results.csv', index_col="day")
 
 for day in range(1, DAYS+1):
