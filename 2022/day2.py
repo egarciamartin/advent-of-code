@@ -9,12 +9,6 @@ score_chart = {
     'Z': 3
 }
 
-win_action = {
-    'A': 'Y',
-    'B': 'Z',
-    'C': 'X'
-}
-
 
 def read_input(file):
     with open(file) as f:
@@ -25,15 +19,18 @@ def read_input(file):
 
 
 def part1(guide):
+    """
+    (elf - coder) % 3. 
+    1: loose, 2: win
+    """
     score = 0
-    for (elf, coder) in guide:
-        elf_win = win_action[elf]
-        # win
-        if elf_win == coder:
-            score += 6
-        elif score_chart[elf] == score_chart[coder]:
-            score += 3  # draw
 
+    for (elf, coder) in guide:
+        mod_score = (score_chart[elf] - score_chart[coder]) % 3
+        if mod_score == 0:
+            score += 3
+        elif mod_score == 2:
+            score += 6
         score += score_chart[coder]
 
     return score
@@ -49,7 +46,6 @@ def part2(guide):
     """
 
     circular_list = [1, 2, 3]
-
     score = 0
     for (elf, shape) in guide:
         if shape == 'Y':
