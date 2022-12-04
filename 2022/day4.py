@@ -21,12 +21,10 @@ def get_pairs(items, part2=False):
         # contained inside (1 in 2)
         elif el[1][0] <= el[0][0] and el[1][1] >= el[0][1]:
             pairs += 1
-        # Right of the first overlaps with left of the second
-        elif el[0][1] >= el[1][0] and el[1][1] >= el[0][1] and part2:
+
+        elif not el[1][0] > el[0][1] and not el[0][0] > el[1][1] and part2:
             pairs += 1
-        # Left of the first overlaps with right of the second.
-        elif el[0][0] >= el[1][0] and el[1][1] >= el[0][0] and part2:
-            pairs += 1
+
     return pairs
 
 
