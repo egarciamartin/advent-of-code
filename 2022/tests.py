@@ -4,8 +4,11 @@ import day2 as d2
 import day3 as d3
 import day4 as d4
 import day5 as d5
+import day6 as d6
+import day7 as d7
+import day8 as d8
 
-DAYS = 5
+DAYS = 8
 results = pd.read_csv('results.csv', index_col="day")
 
 for day in range(1, DAYS+1):

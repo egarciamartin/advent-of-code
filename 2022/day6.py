@@ -1,4 +1,3 @@
-from collections import defaultdict, deque
 
 DAY = 6
 
