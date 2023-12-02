@@ -1,10 +1,3 @@
-"""
-Random sampling with replacement
-The Elf would first like to know which games
-would have been possible if the bag contained
-only 12 red cubes, 13 green cubes,
-and 14 blue cubes?
-"""
 from collections import defaultdict
 from functools import reduce
 
@@ -32,7 +25,6 @@ def main():
             powers.append(reduce(lambda x, y: x * y,  max_colors.values()))
             if is_valid:
                 valid_games.append(id_ + 1)
-
 
         print(f"Part 1: {sum(valid_games)}") 
         print(f"Part 2: {sum(powers)}")
