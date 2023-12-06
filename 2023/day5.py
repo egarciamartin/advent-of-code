@@ -14,7 +14,6 @@ def main():
     }
     with open("day5_input.txt") as f:
         seeds = list(map(int, f.readline().strip().split(": ")[1].split(" ")))
-        print(seeds)
         for line in f:
             line = line.strip()
             try:
@@ -33,14 +32,14 @@ def main():
                 continue
     locations = set()
     for seed in seeds:
-        for name, map_ in maps.items():
+        for _, map_ in maps.items():
             for el in map_:
                 if seed >= el["min"] and seed <= el["max"]:
                     seed += el["diff"]
                     break
         locations.add(seed)
     print(f"Part 1: {min(locations)}")
-    # print(f"Part 2: {sum(card_copies.values())}")
+    # print(f"Part 2: {}")
 
 
 if __name__ == "__main__":
