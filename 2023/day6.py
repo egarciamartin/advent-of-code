@@ -10,7 +10,12 @@ def main():
             part1_score *= ways_to_win
 
     print(f"Part 1: {part1_score}")
-    # print(f"Part 2: {}")
+
+    time = int("".join(map(str, times)))
+    distance = int("".join(map(str, distances)))
+    part2_score = sum(1 for i in range(time) if (time - i) * i > distance)
+
+    print(f"Part 2: {part2_score}")
 
 
 if __name__ == "__main__":
