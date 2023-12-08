@@ -1,4 +1,5 @@
 from collections import Counter, defaultdict
+from typing import Tuple
 
 ALPHABET = "AKQJT98765432"
 ALPHABET_JOKER = "AKQT98765432J"
@@ -22,7 +23,7 @@ def get_type(hand: str) -> str:
         return "HC"
 
 
-def get_type_joker(hand: str) -> str:
+def get_type_joker(hand: str) -> Tuple[str, str]:
     if "J" in hand:
         c = Counter(hand)
         if len(c) > 1:
