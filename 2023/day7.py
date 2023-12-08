@@ -1,7 +1,7 @@
 from collections import Counter, defaultdict
 
 ALPHABET = "AKQJT98765432"
-ALPHABET_JOKER = "AKQJT98765432"
+ALPHABET_JOKER = "AKQT98765432J"
 
 
 def get_type(hand: str) -> str:
@@ -40,8 +40,8 @@ def get_type_joker(hand: str) -> str:
                     key=lambda x: (-x[1], [ALPHABET_JOKER.index(c) for c in x[0]]),
                 )[0][0]
             joker_hand = hand.replace("J", sub)
-            return get_type(joker_hand)
-    return get_type(hand)
+            return get_type(joker_hand), joker_hand
+    return get_type(hand), hand
 
 
 def main():
@@ -54,7 +54,10 @@ def main():
         for i, line in enumerate(f):
             hand, bid = line.strip().split()
             scores[get_type(hand)].append({"hand": hand, "bid": bid})
-            scores_joker[get_type_joker(hand)].append({"hand": hand, "bid": bid})
+            hand_type_joker, joker_hand = get_type_joker(hand)
+            scores_joker[hand_type_joker].append(
+                {"joker_hand": joker_hand, "bid": bid, "hand": hand}
+            )
 
     rank_p1 = i + 1
     rank_p2 = i + 1
