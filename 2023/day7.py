@@ -36,6 +36,7 @@ def get_type_joker(hand: str) -> Tuple[str, str]:
                     joker_hand, key=lambda x: [ALPHABET_JOKER.index(c) for c in x]
                 )[0]
             else:
+                # sort by most common and then best card
                 sub = sorted(
                     c_joker.most_common(),
                     key=lambda x: (-x[1], [ALPHABET_JOKER.index(c) for c in x[0]]),
