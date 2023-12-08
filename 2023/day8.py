@@ -13,7 +13,6 @@ def solve(current: str, end: str, d: dict, instructions=List[str]) -> int:
 
 
 def main():
-    steps = 0
     d = {}
     with open("day8_input.txt") as f:
         instructions = f.readline().strip()
