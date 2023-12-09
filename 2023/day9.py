@@ -1,4 +1,5 @@
 from functools import reduce
+from itertools import pairwise
 
 
 def main():
@@ -10,7 +11,7 @@ def main():
             last_history = [history[-1]]
             first_history = [history[0]]
             while len(set(history)) > 1:
-                history = [y - x for x, y in zip(history[:-1], history[1:])]
+                history = [y - x for x, y in pairwise(history)]
                 last_history.append(history[-1])
                 first_history.append(history[0])
             part1_sum += sum(last_history)
