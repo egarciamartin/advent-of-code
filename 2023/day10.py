@@ -30,11 +30,13 @@ def get_neighbors(coord: Tuple) -> List:
         raise ValueError(f"Pipe {pipe} not in list, error in reading input")
 
 
-def bfs(start: Tuple, end: Tuple) -> int:
+def bfs(start: Tuple) -> int:
     """
     Reasoning: the start will have two paths,
     it doesn't matter which one we take since it's
     a loop. To not make a double loop, focus only on one of them
+    We don't need to check current != end because if all are visited
+    the q will be empty
     """
     visited = set()
     first_neighbors = get_neighbors(start)
@@ -64,7 +66,7 @@ def main():
                 if c == "S":
                     start = (row, col)
 
-    steps = bfs(start, start)
+    steps = bfs(start)
 
     print(f"Part 1: {steps // 2}")
     # print(f"Part 2: {part2_sum}")
